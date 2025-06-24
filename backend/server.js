@@ -7,6 +7,18 @@ const cors = require("cors");
 
 const app = express(); //initializing express app
 
+
+//setting up middlewares
+app.use(express.json()); //to parse JSON data
+app.use(express.urlencoded({extended:false})); //to parse URL-encoded data
+app.use(bodyParser.json()); //to parse JSON data coming from frontend and to be used in backed, convert the data into object
+
+//setting up routes
+app.get("/", (req,res)=>{
+    res.send("Welcome to the Inventory Management System API");
+})
+
+
 //setting up port
 const PORT = process.env.PORT || 5000;
 
